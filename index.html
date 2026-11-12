@@ -45,6 +45,7 @@ header p { margin: 0; font-size: 18px; }
 
 <script src="adhkar.js"></script>
 <script src="tasbih.js"></script>
+<script src="zakat.js"></script>
 <script>
 var sections = [
   "القرآن الكريم",
@@ -69,7 +70,9 @@ var cards = document.getElementById("cards");
 function openSection(name) {
   title.textContent = name;
   body.innerHTML = "";
-  if (name === "المسبحة الإلكترونية" && typeof showTasbih === "function") {
+  if (window.SECTIONS && window.SECTIONS[name]) {
+    window.SECTIONS[name](body);
+  } else if (name === "المسبحة الإلكترونية" && typeof showTasbih === "function") {
     showTasbih(body);
   } else if (name === "الأذكار والأدعية" && typeof showAdhkar === "function") {
     showAdhkar(body);
