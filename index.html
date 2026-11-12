@@ -47,6 +47,7 @@ header p { margin: 0; font-size: 18px; }
 <script src="tasbih.js"></script>
 <script src="zakat.js"></script>
 <script src="prayer.js"></script>
+<script src="wird.js"></script>
 <script>
 var sections = [
   "القرآن الكريم",
@@ -71,6 +72,7 @@ var cards = document.getElementById("cards");
 function openSection(name) {
   title.textContent = name;
   body.innerHTML = "";
+  body.onclick = null;
   if (window.SECTIONS && window.SECTIONS[name]) {
     window.SECTIONS[name](body);
   } else if (name === "المسبحة الإلكترونية" && typeof showTasbih === "function") {
