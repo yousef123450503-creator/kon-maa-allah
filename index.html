@@ -137,6 +137,8 @@
 
   </div>
 
+  <script src="adhkar.js"></script>
+
   <script>
     var sections = [
       "القرآن الكريم",
@@ -229,7 +231,7 @@
     /* ===== فتح القسم ===== */
     function openSection(name) {
       title.textContent = name;
-          if (name === "المسبحة الإلكترونية") {
+      if (name === "المسبحة الإلكترونية") {
         showTasbih();
       } else if (name === "الأذكار والأدعية") {
         showAdhkar(body);
@@ -255,8 +257,8 @@
       section.hidden = true;
       home.hidden = false;
     });
-  <script src="adhkar.js"></script>
   </script>
+
 </body>
 </html>
    
