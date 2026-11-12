@@ -229,8 +229,10 @@
     /* ===== فتح القسم ===== */
     function openSection(name) {
       title.textContent = name;
-      if (name === "المسبحة الإلكترونية") {
+          if (name === "المسبحة الإلكترونية") {
         showTasbih();
+      } else if (name === "الأذكار والأدعية") {
+        showAdhkar(body);
       } else {
         body.innerHTML = "<p>هذا القسم قيد الإنشاء بإذن الله.</p>";
       }
