@@ -4,30 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>كُن مع الله</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      background: #ffffff;
+      font-family: 'Cairo', Tahoma, Arial, sans-serif;
+      background: #f3f8ff;
       color: #0b3d91;
-      text-align: center;
     }
     header {
       background: #0b3d91;
-      color: #ffffff;
-      padding: 40px 20px;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
     }
-    h1 { margin: 0 0 10px; font-size: 40px; }
-    p { margin: 0; font-size: 20px; }
+    header h1 { margin: 0 0 8px; font-size: 36px; }
+    header p { margin: 0; font-size: 18px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .verse {
+      background: #fff;
+      border: 1px solid #cfe0ff;
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #cfe0ff;
+      border-radius: 14px;
+      padding: 22px 10px;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      color: #0b3d91;
+      cursor: pointer;
+    }
+    .card:hover { background: #e6f0ff; }
+    .back {
+      background: #0b3d91;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .page-box {
+      background: #fff;
+      border: 1px solid #cfe0ff;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+    }
+    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>كُن مع الله</h1>
     <p>كن مع الله ترى الله معك</p>
   </header>
-  <main>
-    <p style="margin-top:40px;">الموقع تحت الإنشاء بإذن الله</p>
-  </main>
+
+  <div class="container">
+
+    <!-- الصفحة الرئيسية -->
+    <div id="home">
+      <div class="verse">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
+      <div class="grid" id="cards"></div>
+    </div>
+
+    <!-- صفحة القسم -->
+    <div id="section" hidden>
+      <button class="back" id="backBtn">← الرجوع للرئيسية</button>
+      <div class="page-box">
+        <h2 id="sectionTitle"></h2>
+        <p>هذا القسم قيد الإنشاء بإذن الله.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var sections = [
+      "القرآن الكريم",
+      "الاستماع للقرآن",
+      "تدريب التلاوة",
+      "الأذكار والأدعية",
+      "المسبحة الإلكترونية",
+      "مواقيت الصلاة",
+      "حاسبة الزكاة",
+      "المساعد الإسلامي",
+      "وردي اليومي",
+      "الإرشاد الأبوي",
+      "اقتراحات وتواصل"
+    ];
+
+    var home = document.getElementById("home");
+    var section = document.getElementById("section");
+    var title = document.getElementById("sectionTitle");
+    var cards = document.getElementById("cards");
+
+    sections.forEach(function (name) {
+      var btn = document.createElement("button");
+      btn.className = "card";
+      btn.textContent = name;
+      btn.addEventListener("click", function () {
+        title.textContent = name;
+        home.hidden = true;
+        section.hidden = false;
+        window.scrollTo(0, 0);
+      });
+      cards.appendChild(btn);
+    });
+
+    document.getElementById("backBtn").addEventListener("click", function () {
+      section.hidden = true;
+      home.hidden = false;
+    });
+  </script>
+
 </body>
 </html>
+
