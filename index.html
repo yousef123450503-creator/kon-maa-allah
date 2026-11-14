@@ -3,34 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1554A6">
 <title>كُن مع الله</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
+:root { --blue: #1554A6; --blue2: #2878D4; --soft: #EAF3FF; --line: #d3e3fb; }
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Cairo', Tahoma, Arial, sans-serif; background: #f3f8ff; color: #0b3d91; }
-header { background: #0b3d91; color: #fff; padding: 30px 20px; text-align: center; }
-header h1 { margin: 0 0 8px; font-size: 36px; }
-header p { margin: 0; font-size: 18px; }
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
-.verse { background: #fff; border: 1px solid #cfe0ff; border-radius: 14px; padding: 18px; text-align: center; font-size: 22px; margin-bottom: 20px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-.card { background: #fff; border: 1px solid #cfe0ff; border-radius: 14px; padding: 22px 10px; font-family: inherit; font-size: 18px; font-weight: 700; color: #0b3d91; cursor: pointer; }
-.card:hover { background: #e6f0ff; }
-.back { background: #0b3d91; color: #fff; border: none; border-radius: 10px; padding: 10px 18px; font-family: inherit; font-size: 16px; cursor: pointer; margin-bottom: 20px; }
-.page-box { background: #fff; border: 1px solid #cfe0ff; border-radius: 14px; padding: 30px; text-align: center; }
+body { margin: 0; font-family: 'Cairo', Tahoma, Arial, sans-serif; background: #f5f9ff; color: var(--blue); }
+
+/* الرأس */
+header { background: linear-gradient(160deg, var(--blue) 0%, var(--blue2) 100%); color: #fff; text-align: center; padding: 34px 20px 70px; position: relative; }
+.logo { width: 76px; height: 76px; margin: 0 auto 12px; border-radius: 50%; background: #fff; color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 900; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+header h1 { margin: 0 0 4px; font-size: 36px; font-weight: 900; }
+header .slogan { margin: 0; font-size: 17px; opacity: .95; }
+header .hijri { display: inline-block; margin-top: 14px; background: rgba(255,255,255,.16); border-radius: 20px; padding: 4px 16px; font-size: 14px; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 18px 20px; }
+
+/* الآية */
+.verse { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 18px; text-align: center; margin: -42px auto 26px; box-shadow: 0 8px 22px rgba(21,84,166,.1); position: relative; }
+.verse .text { font-size: 24px; font-weight: 700; line-height: 1.9; }
+.verse .ref { font-size: 13px; opacity: .65; margin-top: 4px; }
+
+h2.title { font-size: 20px; margin: 0 0 14px; font-weight: 700; }
+
+/* البطاقات */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 14px 16px; font-family: inherit; color: var(--blue); cursor: pointer; text-align: center; transition: transform .15s, box-shadow .15s, background .15s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(21,84,166,.14); background: var(--soft); }
+.card .icon { display: block; font-size: 34px; margin-bottom: 8px; }
+.card .name { display: block; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.card .desc { display: block; font-size: 13px; opacity: .72; line-height: 1.6; }
+.badge { position: absolute; top: 10px; left: 10px; font-size: 11px; padding: 1px 9px; border-radius: 12px; background: #e3f6ea; color: #1f7a45; font-weight: 600; }
+.card.soon { opacity: .78; }
+.card.soon .badge { background: #fff1d6; color: #9a6a00; }
+
+/* صفحة القسم */
+.back { background: var(--blue); color: #fff; border: none; border-radius: 12px; padding: 10px 20px; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; margin: 22px 0 16px; }
+.page-box { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px 20px; text-align: center; box-shadow: 0 6px 18px rgba(21,84,166,.07); }
+.page-box h2 { margin: 0 0 16px; font-size: 24px; }
+
+footer { text-align: center; padding: 22px 16px 34px; font-size: 14px; opacity: .7; }
 [hidden] { display: none !important; }
+@media (max-width: 480px) {
+  header h1 { font-size: 30px; }
+  .verse .text { font-size: 21px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .card { padding: 16px 8px 14px; }
+  .card .desc { font-size: 12px; }
+}
 </style>
 </head>
 <body>
 
+<script src="splash.js"></script>
+
 <header>
+  <div class="logo">كُن</div>
   <h1>كُن مع الله</h1>
-  <p>كن مع الله ترى الله معك</p>
+  <p class="slogan">كن مع الله ترى الله معك</p>
+  <span class="hijri" id="hijri" hidden></span>
 </header>
 
 <div class="container">
+
   <div id="home">
-    <div class="verse">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
+    <div class="verse">
+      <div class="text">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
+      <div class="ref">سورة الرعد: ٢٨</div>
+    </div>
+    <h2 class="title">أقسام التطبيق</h2>
     <div class="grid" id="cards"></div>
   </div>
 
@@ -41,7 +85,10 @@ header p { margin: 0; font-size: 18px; }
       <div id="sectionBody"></div>
     </div>
   </div>
+
 </div>
+
+<footer>كُن مع الله · نسخة تجريبية</footer>
 
 <script src="adhkar.js"></script>
 <script src="tasbih.js"></script>
@@ -51,17 +98,17 @@ header p { margin: 0; font-size: 18px; }
 <script src="quran.js"></script>
 <script>
 var sections = [
-  "القرآن الكريم",
-  "الاستماع للقرآن",
-  "تدريب التلاوة",
-  "الأذكار والأدعية",
-  "المسبحة الإلكترونية",
-  "مواقيت الصلاة",
-  "حاسبة الزكاة",
-  "المساعد الإسلامي",
-  "وردي اليومي",
-  "الإرشاد الأبوي",
-  "اقتراحات وتواصل"
+  { name: "القرآن الكريم", icon: "📖", desc: "اقرأ المصحف صفحة بصفحة", ready: true },
+  { name: "الاستماع للقرآن", icon: "🎧", desc: "استمع للقرّاء", ready: false },
+  { name: "مواقيت الصلاة", icon: "🕋", desc: "مواقيت حسب موقعك", ready: true },
+  { name: "الأذكار والأدعية", icon: "🤲", desc: "الصباح والمساء والنوم", ready: true },
+  { name: "المسبحة الإلكترونية", icon: "📿", desc: "عدّاد التسبيح", ready: true },
+  { name: "وردي اليومي", icon: "✅", desc: "تابع وردك كل يوم", ready: true },
+  { name: "حاسبة الزكاة", icon: "💰", desc: "احسب زكاة مالك", ready: true },
+  { name: "تدريب التلاوة", icon: "🎙️", desc: "حسّن تلاوتك", ready: false },
+  { name: "المساعد الإسلامي", icon: "💬", desc: "أسئلة بمصادر موثوقة", ready: false },
+  { name: "الإرشاد الأبوي", icon: "👨‍👩‍👧", desc: "ربط حساب الأهل والأبناء", ready: false },
+  { name: "اقتراحات وتواصل", icon: "✉️", desc: "شاركنا رأيك", ready: false }
 ];
 
 var home = document.getElementById("home");
@@ -69,6 +116,16 @@ var section = document.getElementById("section");
 var title = document.getElementById("sectionTitle");
 var body = document.getElementById("sectionBody");
 var cards = document.getElementById("cards");
+
+// التاريخ الهجري
+try {
+  var hijriText = new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", {
+    weekday: "long", day: "numeric", month: "long", year: "numeric"
+  }).format(new Date());
+  var hijriEl = document.getElementById("hijri");
+  hijriEl.textContent = hijriText;
+  hijriEl.hidden = false;
+} catch (e) {}
 
 function openSection(name) {
   title.textContent = name;
@@ -88,12 +145,32 @@ function openSection(name) {
   window.scrollTo(0, 0);
 }
 
-sections.forEach(function (name) {
+sections.forEach(function (s) {
   var btn = document.createElement("button");
-  btn.className = "card";
-  btn.textContent = name;
+  btn.className = "card" + (s.ready ? "" : " soon");
+
+  var badge = document.createElement("span");
+  badge.className = "badge";
+  badge.textContent = s.ready ? "متاح" : "قريبًا";
+
+  var icon = document.createElement("span");
+  icon.className = "icon";
+  icon.textContent = s.icon;
+
+  var name = document.createElement("span");
+  name.className = "name";
+  name.textContent = s.name;
+
+  var desc = document.createElement("span");
+  desc.className = "desc";
+  desc.textContent = s.desc;
+
+  btn.appendChild(badge);
+  btn.appendChild(icon);
+  btn.appendChild(name);
+  btn.appendChild(desc);
   btn.addEventListener("click", function () {
-    openSection(name);
+    openSection(s.name);
   });
   cards.appendChild(btn);
 });
@@ -101,8 +178,10 @@ sections.forEach(function (name) {
 document.getElementById("backBtn").addEventListener("click", function () {
   section.hidden = true;
   home.hidden = false;
+  window.scrollTo(0, 0);
 });
 </script>
 
 </body>
 </html>
+
