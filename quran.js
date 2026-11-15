@@ -7,48 +7,110 @@
 
   var style = document.createElement("style");
   style.textContent =
-    ".q-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-bottom:14px}" +
-    ".q-bar select{font-family:inherit;font-size:16px;padding:9px;border:1px solid #0b3d91;border-radius:10px;color:#0b3d91;background:#fff;max-width:100%}" +
-    ".q-go{display:flex;gap:6px;align-items:center}" +
-    ".q-go input{width:80px;font-family:inherit;font-size:16px;padding:9px;border:1px solid #0b3d91;border-radius:10px;color:#0b3d91;text-align:center}" +
-    ".q-btn{font-family:inherit;font-size:16px;padding:9px 16px;border:none;border-radius:10px;background:#0b3d91;color:#fff;cursor:pointer}" +
-    ".q-btn.light{background:#fff;color:#0b3d91;border:1px solid #0b3d91}" +
-    ".q-info{font-size:16px;margin-bottom:12px;opacity:.85}" +
-    ".q-page{background:#fffdf7;border:1px solid #e3d9b8;border-radius:14px;padding:22px 18px;font-family:'Amiri Quran','Amiri',serif;line-height:2.5;text-align:justify;direction:rtl;color:#1a1a1a}" +
-    ".q-surah{background:#0b3d91;color:#fff;border-radius:10px;text-align:center;padding:8px;margin:14px 0;font-size:1.1em}" +
-    ".q-bism{text-align:center;margin:8px 0 14px}" +
-    ".q-flow{margin:0}" +
-    ".q-no{color:#0b3d91;font-size:.75em;margin:0 4px}" +
-    ".q-nav{display:flex;justify-content:space-between;margin-top:16px}" +
-    ".q-err{text-align:center;line-height:2}";
+    ".page-box.bare{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important}" +
+    ".qx-search{display:flex;align-items:center;gap:10px;background:#EAF3FF;border-radius:18px;padding:12px 16px;box-shadow:inset 0 0 0 1px #d6e6fb}" +
+    ".qx-search input{flex:1;border:none;background:transparent;font-family:inherit;font-size:16px;color:#1554A6;outline:none;min-width:0}" +
+    ".qx-search input::placeholder{color:#7f9bc4}" +
+    ".qx-tabs{display:flex;gap:8px;margin:12px 0}" +
+    ".qx-tabs button{flex:1;border:none;border-radius:14px;padding:9px;font-family:inherit;font-size:15px;font-weight:700;background:#fff;color:#687589;box-shadow:0 2px 8px rgba(21,84,166,.08);cursor:pointer}" +
+    ".qx-tabs button.on{background:#1554A6;color:#fff}" +
+    ".qx-resume{display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(100deg,#2878D4,#1554A6);color:#fff;border-radius:20px;padding:14px 16px;margin-bottom:12px;cursor:pointer;box-shadow:0 8px 22px rgba(21,84,166,.25);text-align:right}" +
+    ".qx-resume b{font-size:16px;display:block}.qx-resume small{font-size:13px;opacity:.9}" +
+    ".qx-resume span.go{background:rgba(255,255,255,.2);border-radius:14px;padding:6px 14px;font-weight:700;font-size:14px;white-space:nowrap}" +
+    ".qx-list{background:#fff;border-radius:22px;border:1px solid #e1ecfb;box-shadow:0 6px 22px rgba(21,84,166,.08);padding:4px 14px}" +
+    ".qx-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #eef3fb;cursor:pointer;text-align:right}" +
+    ".qx-row:last-child{border-bottom:none}" +
+    ".qx-num{width:44px;height:44px;border-radius:14px;background:#EAF3FF;color:#1554A6;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex:none}" +
+    ".qx-info{flex:1;min-width:0}" +
+    ".qx-name{font-size:17px;font-weight:800;color:#1554A6}" +
+    ".qx-cnt{font-size:13px;color:#687589;margin-top:1px}" +
+    ".qx-bm{border:none;background:transparent;cursor:pointer;padding:8px;color:#1554A6;font-size:0;line-height:0}" +
+    ".qx-bm svg{width:22px;height:22px}" +
+    ".qx-empty{padding:26px 8px;color:#687589;text-align:center;font-size:15px;line-height:2}" +
+    ".qx-sub{font-size:13px;color:#687589;margin:10px 4px 2px;text-align:right;font-weight:700}" +
+    ".qr-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}" +
+    ".qr-btn{border:none;background:#fff;color:#1554A6;font-family:inherit;font-size:14px;font-weight:700;border-radius:14px;padding:8px 14px;box-shadow:0 3px 10px rgba(21,84,166,.1);cursor:pointer}" +
+    ".qr-fs{display:flex;gap:6px}" +
+    ".qr-info{font-size:13px;color:#687589;flex:1;text-align:center}" +
+    ".qr-page{background:#fffefb;border:1px solid #dfe8f7;border-radius:18px;padding:14px 16px 22px;font-family:'Amiri Quran','Amiri',serif;line-height:2.55;text-align:justify;direction:rtl;color:#1b2a44;box-shadow:0 6px 22px rgba(21,84,166,.07)}" +
+    ".qr-banner{position:relative;margin:12px 0 14px;padding:10px 14px;text-align:center;font-size:1.05em;font-weight:700;color:#1554A6;background:linear-gradient(180deg,#f3f8ff,#e8f1fe);border:1.5px solid #7ba6e6;border-radius:8px;outline:1.5px solid #bcd3f3;outline-offset:3px}" +
+    ".qr-bism{text-align:center;margin:6px 0 10px}" +
+    ".qr-flow{margin:0}" +
+    ".qr-no{display:inline-flex;align-items:center;justify-content:center;width:1.55em;height:1.55em;border:1.5px solid #2878D4;border-radius:50%;color:#1554A6;font-size:.55em;font-family:'Tajawal',sans-serif;font-weight:700;margin:0 4px;vertical-align:middle;line-height:1}" +
+    ".qr-ctrl{position:sticky;bottom:calc(86px + env(safe-area-inset-bottom));z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}" +
+    ".qr-round{width:50px;height:50px;border-radius:50%;border:none;background:#fff;color:#1554A6;font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(21,84,166,.2);display:flex;align-items:center;justify-content:center;flex:none}" +
+    ".qr-round.on{background:#1554A6;color:#fff}" +
+    ".qr-pill{flex:1;height:50px;border-radius:25px;border:none;background:#fff;color:#1554A6;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(21,84,166,.2)}" +
+    ".qr-err{text-align:center;line-height:2.2;font-family:'Tajawal',sans-serif;font-size:16px;color:#173D48}" +
+    ".qr-retry{margin-top:8px;border:none;background:#1554A6;color:#fff;border-radius:14px;padding:9px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}";
   document.head.appendChild(style);
 
   var API = "https://api.alquran.cloud/v1";
   var BISMILLAH = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ";
   var TOTAL = 604;
 
+  // أسماء السور وعدد آياتها
+  var SURAHS = [
+    ["الفاتحة",7],["البقرة",286],["آل عمران",200],["النساء",176],["المائدة",120],["الأنعام",165],
+    ["الأعراف",206],["الأنفال",75],["التوبة",129],["يونس",109],["هود",123],["يوسف",111],
+    ["الرعد",43],["إبراهيم",52],["الحجر",99],["النحل",128],["الإسراء",111],["الكهف",110],
+    ["مريم",98],["طه",135],["الأنبياء",112],["الحج",78],["المؤمنون",118],["النور",64],
+    ["الفرقان",77],["الشعراء",227],["النمل",93],["القصص",88],["العنكبوت",69],["الروم",60],
+    ["لقمان",34],["السجدة",30],["الأحزاب",73],["سبأ",54],["فاطر",45],["يس",83],
+    ["الصافات",182],["ص",88],["الزمر",75],["غافر",85],["فصلت",54],["الشورى",53],
+    ["الزخرف",89],["الدخان",59],["الجاثية",37],["الأحقاف",35],["محمد",38],["الفتح",29],
+    ["الحجرات",18],["ق",45],["الذاريات",60],["الطور",49],["النجم",62],["القمر",55],
+    ["الرحمن",78],["الواقعة",96],["الحديد",29],["المجادلة",22],["الحشر",24],["الممتحنة",13],
+    ["الصف",14],["الجمعة",11],["المنافقون",11],["التغابن",18],["الطلاق",12],["التحريم",12],
+    ["الملك",30],["القلم",52],["الحاقة",52],["المعارج",44],["نوح",28],["الجن",28],
+    ["المزمل",20],["المدثر",56],["القيامة",40],["الإنسان",31],["المرسلات",50],["النبأ",40],
+    ["النازعات",46],["عبس",42],["التكوير",29],["الانفطار",19],["المطففين",36],["الانشقاق",25],
+    ["البروج",22],["الطارق",17],["الأعلى",19],["الغاشية",26],["الفجر",30],["البلد",20],
+    ["الشمس",15],["الليل",21],["الضحى",11],["الشرح",8],["التين",8],["العلق",19],
+    ["القدر",5],["البينة",8],["الزلزلة",8],["العاديات",11],["القارعة",11],["التكاثر",8],
+    ["العصر",3],["الهمزة",9],["الفيل",5],["قريش",4],["الماعون",7],["الكوثر",3],
+    ["الكافرون",6],["النصر",3],["المسد",5],["الإخلاص",4],["الفلق",5],["الناس",6]
+  ];
+
+  var BM_OUT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
+  var BM_IN = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
+  var SEARCH_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1554A6" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
+
   function toAr(n) {
     return String(n).replace(/\d/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".charAt(d); });
   }
-
   function toNumber(text) {
     var s = String(text || "").replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); });
     var n = parseInt(s, 10);
     return isNaN(n) ? 0 : n;
   }
-
-  // إزالة التشكيل للمقارنة فقط
   function norm(s) {
-    return s.replace(/[\u064B-\u065F\u0670\u0640\u06D6-\u06ED]/g, "").replace(/ٱ/g, "ا");
+    return String(s)
+      .replace(/[\u064B-\u065F\u0670\u0640\u06D6-\u06ED]/g, "")
+      .replace(/[أإآٱ]/g, "ا")
+      .replace(/ة/g, "ه")
+      .replace(/ى/g, "ي")
+      .trim();
   }
-
-  // بعض النسخ تضع البسملة في أول آية السورة، فنفصلها ونعرضها بشكل مستقل
   function stripBismillah(text) {
     var words = text.trim().split(/\s+/);
     if (words.length > 4 && norm(words.slice(0, 4).join(" ")) === "بسم الله الرحمن الرحيم") {
       return words.slice(4).join(" ");
     }
     return text;
+  }
+  function countText(n) {
+    return n + (n >= 3 && n <= 10 ? " آيات" : " آية");
+  }
+
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function lsJSON(k, def) {
+    try { var v = JSON.parse(lsGet(k)); return v === null || v === undefined ? def : v; } catch (e) { return def; }
+  }
+  function lsInt(k, def) {
+    var v = parseInt(lsGet(k), 10);
+    return isNaN(v) ? def : v;
   }
 
   function getJSON(url) {
@@ -67,170 +129,333 @@
     });
   }
 
-  function loadSaved(name, def) {
-    try {
-      var v = parseInt(localStorage.getItem(name), 10);
-      return isNaN(v) ? def : v;
-    } catch (e) {
-      return def;
-    }
-  }
-
-  function saveValue(name, v) {
-    try { localStorage.setItem(name, String(v)); } catch (e) {}
+  // صفحة بداية كل سورة (تُجلب مرة واحدة وتُحفظ)
+  function surahStart(n) {
+    var starts = lsJSON("quranStarts", {});
+    if (starts[n]) return Promise.resolve(starts[n]);
+    return getJSON(API + "/ayah/" + n + ":1").then(function (j) {
+      starts[n] = j.data.page;
+      lsSet("quranStarts", JSON.stringify(starts));
+      return j.data.page;
+    });
   }
 
   window.SECTIONS = window.SECTIONS || {};
 
   window.SECTIONS["القرآن الكريم"] = function (target) {
-    var page = Math.min(Math.max(loadSaved("quranPage", 1), 1), TOTAL);
-    var fontSize = Math.min(Math.max(loadSaved("quranFont", 28), 18), 48);
+    // إزالة صندوق القسم الأبيض لهذا القسم فقط
+    var box = target.parentNode;
+    var titleEl = document.getElementById("sectionTitle");
+    if (box && box.classList) {
+      box.classList.add("bare");
+      if (titleEl && window.MutationObserver) {
+        var mo = new MutationObserver(function () {
+          if (titleEl.textContent !== "القرآن الكريم") {
+            box.classList.remove("bare");
+            mo.disconnect();
+          }
+        });
+        mo.observe(titleEl, { childList: true, characterData: true, subtree: true });
+      }
+    }
+
+    var page = Math.min(Math.max(lsInt("quranPage", 1), 1), TOTAL);
+    var hasSaved = lsGet("quranPage") !== null;
+    var fontSize = Math.min(Math.max(lsInt("quranFont", 28), 18), 48);
+    var tab = "all";
+    var query = "";
     var reqId = 0;
 
-    target.innerHTML =
-      '<div class="q-bar">' +
-      '<select id="qSurah"><option>جاري تحميل السور...</option></select>' +
-      '<div class="q-go"><input id="qPage" type="text" inputmode="numeric">' +
-      '<button class="q-btn" data-action="go">اذهب</button></div>' +
-      '<div class="q-go"><button class="q-btn light" data-action="fm">أ−</button>' +
-      '<button class="q-btn light" data-action="fp">أ+</button></div>' +
-      "</div>" +
-      '<div class="q-info" id="qInfo"></div>' +
-      '<div class="q-page" id="qText"></div>' +
-      '<div class="q-nav">' +
-      '<button class="q-btn" data-action="prev">→ السابق</button>' +
-      '<button class="q-btn" data-action="next">التالي ←</button>' +
-      "</div>";
+    /* ========== فهرس السور ========== */
+    function showIndex() {
+      reqId++;
+      target.onclick = null;
+      target.innerHTML =
+        '<div class="qx-search">' + SEARCH_SVG + '<input id="qxS" type="text" placeholder="ابحث عن سورة..." autocomplete="off"></div>' +
+        '<div class="qx-tabs"><button data-tab="all">السور</button><button data-tab="saved">المحفوظات</button></div>' +
+        '<div id="qxResume"></div><div id="qxList"></div>';
 
-    var qText = document.getElementById("qText");
-    var qInfo = document.getElementById("qInfo");
-    var qPage = document.getElementById("qPage");
-    var qSurah = document.getElementById("qSurah");
+      var input = document.getElementById("qxS");
+      input.value = query;
+      input.addEventListener("input", function () { query = input.value; renderList(); });
 
-    // فهرس السور
-    getJSON(API + "/surah")
-      .then(function (j) {
-        qSurah.innerHTML = '<option value="">اختر السورة...</option>';
-        j.data.forEach(function (s) {
-          var opt = document.createElement("option");
-          opt.value = s.number;
-          opt.textContent = toAr(s.number) + ". " + s.name;
-          qSurah.appendChild(opt);
+      var tabBtns = target.querySelectorAll(".qx-tabs button");
+      for (var i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].addEventListener("click", function () {
+          tab = this.getAttribute("data-tab");
+          renderList();
         });
-      })
-      .catch(function () {
-        qSurah.innerHTML = '<option value="">تعذّر تحميل الفهرس</option>';
+      }
+
+      // بطاقة متابعة القراءة
+      var res = document.getElementById("qxResume");
+      if (hasSaved) {
+        var rc = document.createElement("div");
+        rc.className = "qx-resume";
+        rc.innerHTML = '<div><b>متابعة القراءة</b><small>آخر موضع: صفحة ' + page + '</small></div><span class="go">فتح ←</span>';
+        rc.addEventListener("click", function () { showReader(); });
+        res.appendChild(rc);
+      }
+      renderList();
+    }
+
+    function openSurah(n, rowEl) {
+      if (rowEl) rowEl.style.opacity = ".55";
+      surahStart(n).then(function (p) {
+        page = p;
+        lsSet("quranPage", String(page));
+        hasSaved = true;
+        showReader();
+      }).catch(function () {
+        if (rowEl) rowEl.style.opacity = "";
+        var list = document.getElementById("qxList");
+        if (list) {
+          var m = document.createElement("div");
+          m.className = "qx-empty";
+          m.textContent = "تعذّر فتح السورة. تأكد من الإنترنت وحاول مرة تانية.";
+          list.insertBefore(m, list.firstChild);
+        }
+      });
+    }
+
+    function renderList() {
+      var tabBtns = target.querySelectorAll(".qx-tabs button");
+      for (var t = 0; t < tabBtns.length; t++) {
+        tabBtns[t].className = tabBtns[t].getAttribute("data-tab") === tab ? "on" : "";
+      }
+      var favs = lsJSON("quranFavSurahs", []);
+      var marks = lsJSON("quranMarks", []);
+      var out = document.getElementById("qxList");
+      out.innerHTML = "";
+      var q = norm(query);
+
+      function surahRow(i) {
+        var n = i + 1;
+        var row = document.createElement("div");
+        row.className = "qx-row";
+        var isFav = favs.indexOf(n) >= 0;
+        row.innerHTML =
+          '<div class="qx-num">' + n + '</div>' +
+          '<div class="qx-info"><div class="qx-name">' + SURAHS[i][0] + '</div><div class="qx-cnt">' + countText(SURAHS[i][1]) + '</div></div>' +
+          '<button class="qx-bm" aria-label="حفظ السورة">' + (isFav ? BM_IN : BM_OUT) + '</button>';
+        row.addEventListener("click", function () { openSurah(n, row); });
+        row.querySelector(".qx-bm").addEventListener("click", function (e) {
+          e.stopPropagation();
+          var f = lsJSON("quranFavSurahs", []);
+          var k = f.indexOf(n);
+          if (k >= 0) f.splice(k, 1); else f.push(n);
+          lsSet("quranFavSurahs", JSON.stringify(f));
+          renderList();
+        });
+        return row;
+      }
+
+      if (tab === "all") {
+        var list = document.createElement("div");
+        list.className = "qx-list";
+        var shown = 0;
+        for (var i = 0; i < SURAHS.length; i++) {
+          if (q && norm(SURAHS[i][0]).indexOf(q) < 0 && String(i + 1) !== toNumber(q).toString()) continue;
+          list.appendChild(surahRow(i));
+          shown++;
+        }
+        if (!shown) {
+          var e = document.createElement("div");
+          e.className = "qx-empty";
+          e.textContent = "لا توجد سورة بهذا الاسم.";
+          list.appendChild(e);
+        }
+        out.appendChild(list);
+      } else {
+        var wrapper = document.createElement("div");
+        var hasAny = false;
+
+        if (favs.length) {
+          hasAny = true;
+          var s1 = document.createElement("div"); s1.className = "qx-sub"; s1.textContent = "سور محفوظة";
+          wrapper.appendChild(s1);
+          var l1 = document.createElement("div"); l1.className = "qx-list";
+          favs.slice().sort(function (a, b) { return a - b; }).forEach(function (n) {
+            if (SURAHS[n - 1]) l1.appendChild(surahRow(n - 1));
+          });
+          wrapper.appendChild(l1);
+        }
+        if (marks.length) {
+          hasAny = true;
+          var s2 = document.createElement("div"); s2.className = "qx-sub"; s2.textContent = "صفحات محفوظة";
+          wrapper.appendChild(s2);
+          var l2 = document.createElement("div"); l2.className = "qx-list";
+          marks.forEach(function (m) {
+            var row = document.createElement("div");
+            row.className = "qx-row";
+            row.innerHTML =
+              '<div class="qx-num">' + m.p + '</div>' +
+              '<div class="qx-info"><div class="qx-name">صفحة ' + m.p + '</div><div class="qx-cnt">' + (m.s ? "سورة " + m.s : "") + '</div></div>' +
+              '<button class="qx-bm" aria-label="إزالة">' + BM_IN + '</button>';
+            row.addEventListener("click", function () {
+              page = m.p; lsSet("quranPage", String(page)); hasSaved = true; showReader();
+            });
+            row.querySelector(".qx-bm").addEventListener("click", function (e) {
+              e.stopPropagation();
+              var arr = lsJSON("quranMarks", []).filter(function (x) { return x.p !== m.p; });
+              lsSet("quranMarks", JSON.stringify(arr));
+              renderList();
+            });
+            l2.appendChild(row);
+          });
+          wrapper.appendChild(l2);
+        }
+        if (!hasAny) {
+          var emp = document.createElement("div");
+          emp.className = "qx-list";
+          emp.innerHTML = '<div class="qx-empty">لا يوجد شيء محفوظ بعد.<br>اضغط على علامة الحفظ بجوار السورة، أو داخل صفحة المصحف.</div>';
+          wrapper.appendChild(emp);
+        }
+        out.appendChild(wrapper);
+      }
+    }
+
+    /* ========== صفحة القراءة ========== */
+    function showReader() {
+      target.innerHTML =
+        '<div class="qr-top">' +
+        '<button class="qr-btn" id="qrIdx">☰ الفهرس</button>' +
+        '<span class="qr-info" id="qrInfo"></span>' +
+        '<div class="qr-fs"><button class="qr-btn" id="qrFm">أ−</button><button class="qr-btn" id="qrFp">أ+</button></div>' +
+        '</div>' +
+        '<div class="qr-page" id="qrText"></div>' +
+        '<div class="qr-ctrl">' +
+        '<button class="qr-round" id="qrBm" aria-label="حفظ الصفحة">' + BM_OUT.replace('<svg ', '<svg width="22" height="22" ') + '</button>' +
+        '<button class="qr-round" id="qrPrev" aria-label="الصفحة السابقة">›</button>' +
+        '<button class="qr-pill" id="qrPill">صفحة 1</button>' +
+        '<button class="qr-round" id="qrNext" aria-label="الصفحة التالية">‹</button>' +
+        '</div>';
+
+      var qText = document.getElementById("qrText");
+      var qInfo = document.getElementById("qrInfo");
+      var qPill = document.getElementById("qrPill");
+      var qBm = document.getElementById("qrBm");
+      var curSurahName = "";
+
+      function marked() {
+        return lsJSON("quranMarks", []).some(function (m) { return m.p === page; });
+      }
+      function paintBm() {
+        var on = marked();
+        qBm.className = "qr-round" + (on ? " on" : "");
+        qBm.innerHTML = (on ? BM_IN : BM_OUT).replace("<svg ", '<svg width="22" height="22" ');
+      }
+
+      function newFlow() {
+        var d = document.createElement("div");
+        d.className = "qr-flow";
+        return d;
+      }
+
+      function draw(data) {
+        qText.innerHTML = "";
+        qText.style.fontSize = fontSize + "px";
+        var flow = newFlow();
+        qText.appendChild(flow);
+        curSurahName = "";
+
+        data.ayahs.forEach(function (a, idx) {
+          var text = a.text;
+          var sNum = a.surah ? a.surah.number : 0;
+          if (idx === 0 && sNum && SURAHS[sNum - 1]) curSurahName = SURAHS[sNum - 1][0];
+
+          if (a.numberInSurah === 1 && sNum && SURAHS[sNum - 1]) {
+            if (flow.childNodes.length === 0) qText.removeChild(flow);
+            var banner = document.createElement("div");
+            banner.className = "qr-banner";
+            banner.textContent = "سورة " + SURAHS[sNum - 1][0];
+            qText.appendChild(banner);
+
+            if (sNum !== 1 && sNum !== 9) {
+              var b = document.createElement("div");
+              b.className = "qr-bism";
+              b.textContent = BISMILLAH;
+              qText.appendChild(b);
+              text = stripBismillah(text);
+            }
+            flow = newFlow();
+            qText.appendChild(flow);
+          }
+
+          var span = document.createElement("span");
+          span.textContent = text + " ";
+          flow.appendChild(span);
+
+          var no = document.createElement("span");
+          no.className = "qr-no";
+          no.textContent = toAr(a.numberInSurah);
+          flow.appendChild(no);
+          flow.appendChild(document.createTextNode(" "));
+        });
+
+        var juz = data.ayahs.length ? data.ayahs[0].juz : "";
+        qInfo.textContent = juz ? "الجزء " + toAr(juz) : "";
+        qPill.textContent = "صفحة " + page;
+        paintBm();
+        window.scrollTo(0, 0);
+      }
+
+      function render() {
+        var my = ++reqId;
+        qText.textContent = "جاري التحميل...";
+        qPill.textContent = "صفحة " + page;
+        getPage(page)
+          .then(function (data) {
+            if (my !== reqId) return;
+            draw(data);
+          })
+          .catch(function () {
+            if (my !== reqId) return;
+            qText.innerHTML =
+              '<div class="qr-err">تعذّر تحميل الصفحة. تأكد من الإنترنت وحاول مرة تانية.<br>' +
+              '<button class="qr-retry" id="qrRetry">إعادة المحاولة</button></div>';
+            var r = document.getElementById("qrRetry");
+            if (r) r.addEventListener("click", render);
+          });
+      }
+
+      function goTo(n) {
+        page = Math.min(Math.max(n, 1), TOTAL);
+        lsSet("quranPage", String(page));
+        hasSaved = true;
+        render();
+      }
+
+      document.getElementById("qrIdx").addEventListener("click", showIndex);
+      document.getElementById("qrNext").addEventListener("click", function () { goTo(page + 1); });
+      document.getElementById("qrPrev").addEventListener("click", function () { goTo(page - 1); });
+      qPill.addEventListener("click", function () {
+        var v = toNumber(prompt("اذهب إلى صفحة (١ - ٦٠٤):", page));
+        if (v >= 1 && v <= TOTAL) goTo(v);
+      });
+      document.getElementById("qrFp").addEventListener("click", function () {
+        fontSize = Math.min(fontSize + 2, 48);
+        lsSet("quranFont", String(fontSize));
+        qText.style.fontSize = fontSize + "px";
+      });
+      document.getElementById("qrFm").addEventListener("click", function () {
+        fontSize = Math.max(fontSize - 2, 18);
+        lsSet("quranFont", String(fontSize));
+        qText.style.fontSize = fontSize + "px";
+      });
+      qBm.addEventListener("click", function () {
+        var arr = lsJSON("quranMarks", []);
+        var k = -1;
+        for (var i = 0; i < arr.length; i++) if (arr[i].p === page) k = i;
+        if (k >= 0) arr.splice(k, 1); else arr.push({ p: page, s: curSurahName });
+        arr.sort(function (a, b) { return a.p - b.p; });
+        lsSet("quranMarks", JSON.stringify(arr));
+        paintBm();
       });
 
-    qSurah.onchange = function () {
-      var n = parseInt(qSurah.value, 10);
-      if (!n) return;
-      getJSON(API + "/ayah/" + n + ":1")
-        .then(function (j) { goTo(j.data.page); })
-        .catch(function () {
-          qText.innerHTML = '<div class="q-err">تعذّر فتح السورة. تأكد من الإنترنت وحاول مرة تانية.</div>';
-        });
-    };
-
-    function goTo(n) {
-      page = Math.min(Math.max(n, 1), TOTAL);
-      saveValue("quranPage", page);
       render();
     }
 
-    function newFlow() {
-      var d = document.createElement("div");
-      d.className = "q-flow";
-      return d;
-    }
-
-    function draw(data) {
-      qText.innerHTML = "";
-      qText.style.fontSize = fontSize + "px";
-      var flow = newFlow();
-      qText.appendChild(flow);
-
-      data.ayahs.forEach(function (a) {
-        var text = a.text;
-        var sNum = a.surah ? a.surah.number : 0;
-
-        if (a.numberInSurah === 1 && a.surah) {
-          if (flow.childNodes.length === 0) {
-            qText.removeChild(flow);
-          }
-          var banner = document.createElement("div");
-          banner.className = "q-surah";
-          banner.textContent = a.surah.name;
-          qText.appendChild(banner);
-
-          if (sNum !== 1 && sNum !== 9) {
-            var b = document.createElement("div");
-            b.className = "q-bism";
-            b.textContent = BISMILLAH;
-            qText.appendChild(b);
-            text = stripBismillah(text);
-          }
-          flow = newFlow();
-          qText.appendChild(flow);
-        }
-
-        var span = document.createElement("span");
-        span.textContent = text + " ";
-        flow.appendChild(span);
-
-        var no = document.createElement("span");
-        no.className = "q-no";
-        no.textContent = "﴿" + toAr(a.numberInSurah) + "﴾";
-        flow.appendChild(no);
-      });
-
-      var juz = data.ayahs.length ? data.ayahs[0].juz : "";
-      qInfo.textContent = (juz ? "الجزء " + toAr(juz) + " · " : "") + "صفحة " + toAr(page) + " من " + toAr(TOTAL);
-      qPage.value = page;
-      window.scrollTo(0, 0);
-    }
-
-    function render() {
-      var my = ++reqId;
-      qText.textContent = "جاري التحميل...";
-      getPage(page)
-        .then(function (data) {
-          if (my !== reqId) return;
-          draw(data);
-        })
-        .catch(function () {
-          if (my !== reqId) return;
-          qText.innerHTML =
-            '<div class="q-err">تعذّر تحميل الصفحة. تأكد من الإنترنت وحاول مرة تانية.<br>' +
-            '<button class="q-btn" data-action="retry">إعادة المحاولة</button></div>';
-        });
-    }
-
-    target.onclick = function (e) {
-      var el = e.target;
-      while (el && el !== target && !el.getAttribute("data-action")) {
-        el = el.parentNode;
-      }
-      if (!el || el === target) return;
-      var action = el.getAttribute("data-action");
-
-      if (action === "next") goTo(page + 1);
-      else if (action === "prev") goTo(page - 1);
-      else if (action === "retry") render();
-      else if (action === "go") {
-        var n = toNumber(qPage.value);
-        if (n >= 1 && n <= TOTAL) goTo(n);
-      } else if (action === "fp") {
-        fontSize = Math.min(fontSize + 2, 48);
-        saveValue("quranFont", fontSize);
-        qText.style.fontSize = fontSize + "px";
-      } else if (action === "fm") {
-        fontSize = Math.max(fontSize - 2, 18);
-        saveValue("quranFont", fontSize);
-        qText.style.fontSize = fontSize + "px";
-      }
-    };
-
-    render();
+    showIndex();
   };
 })();
