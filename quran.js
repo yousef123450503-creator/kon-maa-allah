@@ -339,6 +339,24 @@
       var qPill = document.getElementById("qrPill");
       var qBm = document.getElementById("qrBm");
       var W = 0, Lh = 30;
+
+      // اجعل الصفحة كاملة داخل الشاشة: العرض يتحدد حسب الارتفاع المتاح
+      function fitStageWidth() {
+        stage.style.maxWidth = "";
+        stage.style.margin = "0";
+        var top = stage.getBoundingClientRect().top + (window.pageYOffset || 0);
+        var availH = window.innerHeight - top - 92 - 40;
+        var avail = stage.parentNode.clientWidth;
+        var maxW = Math.floor(availH / 1.46);
+        var w = Math.max(270, Math.min(avail, maxW));
+        if (w < avail) {
+          stage.style.maxWidth = w + "px";
+          stage.style.margin = "0 auto";
+        }
+      }
+      window.scrollTo(0, 0);
+      fitStageWidth();
+
       var panels = [];
       var cur = null, nxt = null, prv = null;
 
@@ -373,7 +391,7 @@
         W = stage.clientWidth;
         var p = panels[0];
         var bodyW = p.body.clientWidth || (W - 40);
-        Lh = Math.max(28, Math.min(40, Math.round(bodyW * 0.108)));
+        Lh = Math.max(22, Math.min(44, Math.round(bodyW * 0.089)));
         panels.forEach(function (q) { q.body.style.height = (15 * Lh) + "px"; });
         stage.style.height = p.el.offsetHeight + "px";
       }
@@ -582,8 +600,10 @@
         if (!document.body.contains(stage)) { window.removeEventListener("resize", onResize); return; }
         clearTimeout(rzTimer);
         rzTimer = setTimeout(function () {
+          fitStageWidth();
           if (stage.clientWidth === W) return;
           panels.forEach(function (p) { p.page = null; });
+          fitStageWidth();
           W = stage.clientWidth;
           measure();
           assign(page);
