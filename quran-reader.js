@@ -7,38 +7,35 @@
 
   var style = document.createElement("style");
   style.textContent =
-    ".qr-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}" +
-    ".qr-btn{border:none;background:#fff;color:#1554A6;font-family:inherit;font-size:14px;font-weight:700;border-radius:14px;padding:9px 16px;box-shadow:0 3px 10px rgba(21,84,166,.12);cursor:pointer;display:inline-flex;align-items:center;gap:6px}" +
+    ".qr-top{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:4px}" +
+    ".qr-btn{border:none;background:#fff;color:#1554A6;font-family:inherit;font-size:12px;font-weight:700;border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(21,84,166,.1);cursor:pointer;display:inline-flex;align-items:center;gap:4px}" +
     ".qr-btn.on{background:#1554A6;color:#fff}" +
-    ".qr-btn svg{width:18px;height:18px}" +
+    ".qr-btn svg{width:16px;height:16px}" +
     ".qr-stage{position:relative;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;margin:0 auto}" +
     ".qr-panel{position:absolute;top:0;left:0;width:100%;height:100%;will-change:transform}" +
-    ".mp{height:100%;min-width:0;display:flex;background:repeating-linear-gradient(135deg,#7cc4e6 0 4px,#bfe6f5 4px 8px);border:1.5px solid #1b5f8a;padding:6px;box-shadow:0 8px 24px rgba(21,84,166,.16)}" +
-    ".mp-in{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column;background:#fff;border:1.5px solid #1b5f8a;padding:5px 8px 3px}" +
-    ".mp-head{flex:none;display:flex;justify-content:space-between;align-items:center;height:28px;margin-bottom:3px}" +
-    ".mp-tag{border:1.3px solid #2b7aa8;background:#eef8fc;color:#164a73;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;padding:1px 12px;border-radius:5px;min-width:78px;text-align:center}" +
+    ".mp{height:100%;min-width:0;display:flex;background:repeating-linear-gradient(135deg,#7cc4e6 0 4px,#bfe6f5 4px 8px);border:1.5px solid #1b5f8a;padding:4px;box-shadow:0 8px 24px rgba(21,84,166,.16)}" +
+    ".mp-in{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column;background:#fff;border:1.5px solid #1b5f8a;padding:3px 6px 2px}" +
+    ".mp-head{flex:none;display:flex;justify-content:space-between;align-items:center;height:22px;margin-bottom:2px}" +
+    ".mp-tag{border:1px solid #2b7aa8;background:#eef8fc;color:#164a73;font-family:'Tajawal',sans-serif;font-size:10px;font-weight:700;padding:0 8px;border-radius:4px;min-width:60px;text-align:center}" +
     ".mp-body{flex:1;min-height:0;min-width:0;overflow:hidden;color:#111;direction:rtl;display:flex;flex-direction:column;font-family:'Amiri Quran','Amiri',serif}" +
     ".mp-body.fit{font-family:'Amiri Quran','Amiri',serif}" +
     ".mp-line{flex:none;display:flex;align-items:center;white-space:nowrap;direction:rtl}" +
     ".mp-line .w{flex:none;line-height:1.1}" +
-    ".mp-line .no{flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.4em;height:1.4em;border:1.2px solid #2a7bb0;border-radius:50%;font-size:.55em;font-family:'Tajawal',sans-serif;font-weight:700;color:#164a73;background:#f2fafe}" +
-    ".mp-ban{flex:none;display:flex;align-items:center;justify-content:center;color:#164a73;background:linear-gradient(180deg,#eef8fc,#d8eef8);border:1.4px solid #2b7aa8;border-radius:6px;box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3px #8fc6e0;font-weight:700}" +
-    ".mp-ban .sn{font-family:'surahnames';font-size:1.25em;line-height:1}" +
+    ".mp-line .no{flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.3em;height:1.3em;border:1px solid #2a7bb0;border-radius:50%;font-size:.5em;font-family:'Tajawal',sans-serif;font-weight:700;color:#164a73;background:#f2fafe}" +
+    ".mp-ban{flex:none;display:flex;align-items:center;justify-content:center;color:#164a73;background:linear-gradient(180deg,#eef8fc,#d8eef8);border:1px solid #2b7aa8;border-radius:4px;box-shadow:inset 0 0 0 1px #fff,inset 0 0 0 2px #8fc6e0;font-weight:700}" +
+    ".mp-ban .sn{font-family:'surahnames';font-size:1.1em;line-height:1}" +
     ".mp-bsm{flex:none;display:flex;align-items:center;justify-content:center;white-space:nowrap}" +
     ".mp-seg{margin:0;text-align:justify;text-align-last:justify}" +
     ".mp-seg.end{text-align-last:center}" +
     ".mp-sparse .mp-seg{text-align:center;text-align-last:center}" +
-    ".mp-no{display:inline-flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;border:1.3px solid #2a7bb0;border-radius:50%;color:#164a73;font-size:.52em;font-family:'Tajawal',sans-serif;font-weight:700;margin:0 .3em;vertical-align:middle;line-height:1;background:#f2fafe}" +
+    ".mp-no{display:inline-flex;align-items:center;justify-content:center;width:1.3em;height:1.3em;border:1px solid #2a7bb0;border-radius:50%;color:#164a73;font-size:.5em;font-family:'Tajawal',sans-serif;font-weight:700;margin:0 .2em;vertical-align:middle;line-height:1;background:#f2fafe}" +
     ".nw{white-space:nowrap}" +
-    ".mp-foot{flex:none;display:flex;justify-content:center;align-items:center;height:30px;margin-top:2px}" +
-    ".mp-num{min-width:44px;text-align:center;padding:2px 12px;border:1.3px solid #2b7aa8;background:#eef8fc;color:#164a73;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;border-radius:12px}" +
-    ".mp-load{display:flex;align-items:center;justify-content:center;height:100%;font-family:'Tajawal',sans-serif;font-size:15px;color:#687589;text-align:center;line-height:2;padding:0 14px}" +
-    ".qr-retry{margin-top:8px;border:none;background:#1554A6;color:#fff;border-radius:14px;padding:9px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}" +
-    ".qr-hint{text-align:center;font-size:12px;color:#687589;margin-top:8px}" +
-    ".qr-credit{text-align:center;font-size:10.5px;color:#9aa8bd;margin-top:2px}";
+    ".mp-foot{flex:none;display:flex;justify-content:center;align-items:center;height:24px;margin-top:1px}" +
+    ".mp-num{min-width:36px;text-align:center;padding:1px 8px;border:1px solid #2b7aa8;background:#eef8fc;color:#164a73;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;border-radius:8px}" +
+    ".mp-load{display:flex;align-items:center;justify-content:center;height:100%;font-family:'Tajawal',sans-serif;font-size:14px;color:#687589;text-align:center;line-height:2;padding:0 10px}" +
+    ".qr-retry{margin-top:6px;border:none;background:#1554A6;color:#fff;border-radius:10px;padding:7px 16px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}";
   document.head.appendChild(style);
 
-  // خط أسماء السور (من شبكة Quran Foundation)
   var sf = document.createElement("style");
   sf.textContent =
     "@font-face{font-family:'surahnames';src:url('https://verses.quran.foundation/fonts/quran/surah-names/v1/sura_names.woff2') format('woff2'),url('https://verses.quran.foundation/fonts/quran/surah-names/v1/sura_names.ttf') format('truetype');font-display:block}";
@@ -65,18 +62,15 @@
       target.onclick = null;
       target.innerHTML =
         '<div class="qr-top">' +
-        '<button class="qr-btn" id="qrIdx">☰ الفهرس</button>' +
-        '<button class="qr-btn" id="qrPill">صفحة 1</button>' +
+        '<button class="qr-btn" id="qrIdx" aria-label="الفهرس">☰</button>' +
+        '<button class="qr-btn" id="qrPill" aria-label="الذهاب لصفحة">صفحة 1</button>' +
         '<button class="qr-btn" id="qrBm" aria-label="حفظ الصفحة"></button>' +
         '</div>' +
-        '<div class="qr-stage" id="qrStage"></div>' +
-        '<div class="qr-hint" id="qrHint"></div>' +
-        '<div class="qr-credit">خطوط المصحف: مجمع الملك فهد لطباعة المصحف الشريف، عبر Quran Foundation</div>';
+        '<div class="qr-stage" id="qrStage"></div>';
 
       var stage = document.getElementById("qrStage");
       var qPill = document.getElementById("qrPill");
       var qBm = document.getElementById("qrBm");
-      var qHint = document.getElementById("qrHint");
       var W = 0, H = 0;
       var panels = [];
       var cur = null, nxt = null, prv = null;
@@ -92,23 +86,24 @@
         new Promise(function (res) { setTimeout(res, 2500); })
       ]).catch(function () {});
 
-      /* ---- حجم الصفحة: تملأ الشاشة المتاحة ---- */
       function sizeStage() {
         stage.style.width = "";
         stage.style.height = "";
         var top = stage.getBoundingClientRect().top + (window.pageYOffset || 0);
-        var availH = Math.floor(window.innerHeight - top - 92 - 44);
+        var navH = document.querySelector("nav") ? document.querySelector("nav").offsetHeight : 70;
+        var sbarH = document.querySelector(".sbar") ? document.querySelector(".sbar").offsetHeight : 50;
+        var qrTopH = document.querySelector(".qr-top") ? document.querySelector(".qr-top").offsetHeight : 40;
+        var availH = Math.floor(window.innerHeight - top - navH - 8);
         var availW = stage.parentNode.clientWidth;
-        if (availH < 300) availH = 300;
-        var w = Math.min(availW, Math.max(250, Math.floor(availH / 1.3)));
-        var h = Math.min(availH, Math.floor(w * 1.9));
-        h = Math.max(h, Math.floor(w * 1.3));
+        if (availH < 280) availH = 280;
+        var w = Math.min(availW, Math.max(250, Math.floor(availH / 1.25)));
+        var h = Math.min(availH, Math.floor(w * 1.95));
+        h = Math.max(h, Math.floor(w * 1.25));
         stage.style.width = w + "px";
         stage.style.height = h + "px";
         W = w; H = h;
       }
 
-      /* ---- تحميل البيانات ---- */
       var layoutCache = {};
       function fetchLayout(n) {
         if (layoutCache[n]) return layoutCache[n];
@@ -157,7 +152,6 @@
         return snCache;
       }
 
-      /* ---- إنشاء لوحة الصفحة ---- */
       function createPanel() {
         var el = document.createElement("div");
         el.className = "qr-panel";
@@ -182,7 +176,6 @@
         panel.num.textContent = toAr(panel.page);
       }
 
-      /* ---- العرض الأصلي: أسطر المصحف نفسها + خط الصفحة ---- */
       function renderExact(panel, layout, qcfOk, snOk) {
         var body = panel.body;
         body.className = "mp-body" + (qcfOk ? "" : " fit");
@@ -201,7 +194,7 @@
         var maxLine = 0;
         lines.forEach(function (l) { if ((l.line || 0) > maxLine) maxLine = l.line; });
         var total = Math.max(maxLine, panel.page <= 2 ? 8 : 15);
-        var bodyH = body.clientHeight || (H - 90);
+        var bodyH = body.clientHeight || (H - 60);
         var rowH = total >= 15 ? bodyH / total : Math.min(bodyH / 15 * 1.85, bodyH / total);
         if (total < 15) body.style.justifyContent = "center";
 
@@ -223,9 +216,9 @@
           }
           if (L.type === "surah-header") {
             row.className = "mp-ban";
-            row.style.height = (rowH * 0.9) + "px";
+            row.style.height = (rowH * 0.85) + "px";
             row.style.margin = (rowH * 0.05) + "px 0";
-            row.style.fontSize = Math.max(13, rowH * 0.42) + "px";
+            row.style.fontSize = Math.max(11, rowH * 0.38) + "px";
             if (snOk && L.surah) {
               var sn = document.createElement("span");
               sn.className = "sn";
@@ -245,7 +238,7 @@
               row.style.fontFamily = "'Amiri Quran','Amiri',serif";
               row.textContent = BISMILLAH;
             }
-            row.style.fontSize = Math.max(14, rowH * 0.55) + "px";
+            row.style.fontSize = Math.max(12, rowH * 0.5) + "px";
             row.setAttribute("data-bsm", "1");
           } else {
             row.className = "mp-line";
@@ -281,7 +274,6 @@
           body.appendChild(row);
         }
 
-        // ضبط حجم الخط ليتسع أعرض سطر في عرض الصفحة
         var Wi = body.clientWidth;
         body.style.fontSize = "100px";
         var GAP = 0.2, fMax = Infinity, info = [];
@@ -294,26 +286,25 @@
           if (fl < fMax) fMax = fl;
         });
         if (!isFinite(fMax) || fMax <= 0) fMax = 20;
-        var f = Math.min(fMax * 0.99, rowH / 1.55);
+        var f = Math.min(fMax * 0.99, rowH / 1.45);
         body.style.fontSize = f + "px";
         info.forEach(function (it) {
           var nat = it.sum * f / 100 + Math.max(0, it.k - 1) * GAP * f;
-          if (nat < Wi * 0.78) { it.el.style.justifyContent = "center"; it.el.style.gap = "0.4em"; }
+          if (nat < Wi * 0.78) { it.el.style.justifyContent = "center"; it.el.style.gap = "0.35em"; }
           else { it.el.style.justifyContent = "space-between"; it.el.style.gap = "0"; }
         });
         panel.mode = qcfOk ? "exact" : "unicode";
         setHeader(panel, firstSurah);
       }
 
-      /* ---- العرض الاحتياطي (توزيع تلقائي على ١٥ سطرًا) ---- */
       function renderFitted(panel, data) {
         var body = panel.body;
         body.className = "mp-body fit";
         body.style.justifyContent = "flex-start";
         body.innerHTML = "";
         body.style.fontSize = "16px";
-        var bodyH = body.clientHeight || (H - 90);
-        var Lh = Math.max(20, Math.floor(bodyH / 15));
+        var bodyH = body.clientHeight || (H - 60);
+        var Lh = Math.max(18, Math.floor(bodyH / 15));
         var blocks = [], curBlock = null;
         data.ayahs.forEach(function (a) {
           var sNum = a.surah ? a.surah.number : 0;
@@ -357,7 +348,7 @@
           segEls.forEach(function (s) { n += Math.max(1, Math.round(s.offsetHeight / Lh)); });
           return n;
         }
-        var lo = 9, hi = Math.floor(Lh / 1.5);
+        var lo = 9, hi = Math.floor(Lh / 1.4);
         for (var i = 0; i < 9; i++) {
           var mid = (lo + hi) / 2;
           body.style.fontSize = mid + "px";
@@ -365,7 +356,7 @@
         }
         body.style.fontSize = lo + "px";
         var used = totalLines();
-        panel.el.className = "qr-panel" + (used < 12 && lo >= Math.floor(Lh / 1.5) - 1 ? " mp-sparse" : "");
+        panel.el.className = "qr-panel" + (used < 12 && lo >= Math.floor(Lh / 1.4) - 1 ? " mp-sparse" : "");
         panel.mode = "fitted";
         var first = data.ayahs[0];
         setHeader(panel, first && first.surah ? first.surah.number : 0);
@@ -416,7 +407,6 @@
         });
       }
 
-      /* تعيين الصفحات الثلاث (الحالية والتالية والسابقة) */
       function assign(p) {
         var want = [p, p + 1 <= TOTAL ? p + 1 : null, p - 1 >= 1 ? p - 1 : null];
         var used = [null, null, null];
@@ -443,9 +433,6 @@
         var on = lsJSON("quranMarks", []).some(function (m) { return m.p === page; });
         qBm.className = "qr-btn" + (on ? " on" : "");
         qBm.innerHTML = on ? BM_IN : BM_OUT;
-        var m = cur && cur.mode;
-        qHint.textContent = "اسحب الصفحة يمينًا للصفحة التالية، ويسارًا للسابقة" +
-          (m === "exact" ? " · مصحف المدينة" : m === "unicode" ? " · نمط الخط البديل" : m === "fitted" ? " · نمط احتياطي" : "");
       }
 
       function turn(dir) {
@@ -459,7 +446,6 @@
         }, 290);
       }
 
-      /* السحب باليد (وبالماوس) */
       var drag = null;
       stage.addEventListener("pointerdown", function (e) {
         if (e.pointerType === "mouse" && e.button !== 0) return;
