@@ -81,7 +81,7 @@
         var navH = document.querySelector("nav") ? document.querySelector("nav").offsetHeight : 70;
         var sbarH = document.querySelector(".sbar") ? document.querySelector(".sbar").offsetHeight : 50;
         var availH = Math.floor(window.innerHeight - top - navH - 8);
-        var availW = stage.parentNode.clientWidth;
+        var availW = window.innerWidth;
         if (availH < 280) availH = 280;
         var w = Math.min(availW, Math.max(250, Math.floor(availH / 1.25)));
         var h = Math.min(availH, Math.floor(w * 1.95));
@@ -416,7 +416,7 @@
       }
 
       function refreshChrome() {
-        // لا نظهر أي أزرار أو نصوص فوق الصفحة
+        var on = lsJSON("quranMarks", []).some(function (m) { return m.p === page; });
       }
 
       function turn(dir) {
