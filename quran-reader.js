@@ -7,10 +7,6 @@
 
   var style = document.createElement("style");
   style.textContent =
-    ".qr-top{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:4px}" +
-    ".qr-btn{border:none;background:#fff;color:#1554A6;font-family:inherit;font-size:12px;font-weight:700;border-radius:10px;padding:6px 10px;box-shadow:0 2px 8px rgba(21,84,166,.1);cursor:pointer;display:inline-flex;align-items:center;gap:4px}" +
-    ".qr-btn.on{background:#1554A6;color:#fff}" +
-    ".qr-btn svg{width:16px;height:16px}" +
     ".qr-stage{position:relative;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;margin:0 auto}" +
     ".qr-panel{position:absolute;top:0;left:0;width:100%;height:100%;will-change:transform}" +
     ".mp{height:100%;min-width:0;display:flex;background:repeating-linear-gradient(135deg,#7cc4e6 0 4px,#bfe6f5 4px 8px);border:1.5px solid #1b5f8a;padding:4px;box-shadow:0 8px 24px rgba(21,84,166,.16)}" +
@@ -60,17 +56,9 @@
       var target = ctx.target;
       var page = ctx.getPage();
       target.onclick = null;
-      target.innerHTML =
-        '<div class="qr-top">' +
-        '<button class="qr-btn" id="qrIdx" aria-label="الفهرس">☰</button>' +
-        '<button class="qr-btn" id="qrPill" aria-label="الذهاب لصفحة">صفحة 1</button>' +
-        '<button class="qr-btn" id="qrBm" aria-label="حفظ الصفحة"></button>' +
-        '</div>' +
-        '<div class="qr-stage" id="qrStage"></div>';
+      target.innerHTML = '<div class="qr-stage" id="qrStage"></div>';
 
       var stage = document.getElementById("qrStage");
-      var qPill = document.getElementById("qrPill");
-      var qBm = document.getElementById("qrBm");
       var W = 0, H = 0;
       var panels = [];
       var cur = null, nxt = null, prv = null;
@@ -92,7 +80,6 @@
         var top = stage.getBoundingClientRect().top + (window.pageYOffset || 0);
         var navH = document.querySelector("nav") ? document.querySelector("nav").offsetHeight : 70;
         var sbarH = document.querySelector(".sbar") ? document.querySelector(".sbar").offsetHeight : 50;
-        var qrTopH = document.querySelector(".qr-top") ? document.querySelector(".qr-top").offsetHeight : 40;
         var availH = Math.floor(window.innerHeight - top - navH - 8);
         var availW = stage.parentNode.clientWidth;
         if (availH < 280) availH = 280;
@@ -429,10 +416,7 @@
       }
 
       function refreshChrome() {
-        qPill.textContent = "صفحة " + page;
         var on = lsJSON("quranMarks", []).some(function (m) { return m.p === page; });
-        qBm.className = "qr-btn" + (on ? " on" : "");
-        qBm.innerHTML = on ? BM_IN : BM_OUT;
       }
 
       function turn(dir) {
@@ -498,20 +482,7 @@
       window.addEventListener("resize", onResize);
       window.addEventListener("orientationchange", onResize);
 
-      document.getElementById("qrIdx").addEventListener("click", ctx.showIndex);
-      qPill.addEventListener("click", function () {
-        var v = toNumber(prompt("اذهب إلى صفحة (١ - ٦٠٤):", page));
-        if (v >= 1 && v <= TOTAL) { page = v; ctx.setPage(page); assign(page); }
-      });
-      qBm.addEventListener("click", function () {
-        var arr = lsJSON("quranMarks", []);
-        var k = -1;
-        for (var i = 0; i < arr.length; i++) if (arr[i].p === page) k = i;
-        if (k >= 0) arr.splice(k, 1); else arr.push({ p: page, s: cur ? cur.surah : "" });
-        arr.sort(function (a, b) { return a.p - b.p; });
-        lsSet("quranMarks", JSON.stringify(arr));
-        refreshChrome();
-      });
+      document.getElementById("qrIdx") && document.getElementById("qrIdx").addEventListener("click", ctx.showIndex);
 
       window.scrollTo(0, 0);
       sizeStage();
