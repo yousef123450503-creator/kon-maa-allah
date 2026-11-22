@@ -416,7 +416,7 @@
       }
 
       function refreshChrome() {
-        var on = lsJSON("quranMarks", []).some(function (m) { return m.p === page; });
+        // لا نظهر أي أزرار أو نصوص فوق الصفحة
       }
 
       function turn(dir) {
@@ -490,3 +490,4 @@
       assign(page);
   };
 })();
+
